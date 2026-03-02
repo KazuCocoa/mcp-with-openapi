@@ -1,6 +1,4 @@
-def main():
-    print("Hello from mcp-with-openapi!")
-
+from mcp_server import mcp
 
 if __name__ == "__main__":
-    main()
+    mcp.run(transport="http", port=8000)
