@@ -78,3 +78,7 @@ uv run fastmcp call mcp_server.py openapi_getPostById '{"id": 1}'
 ### Faster edit/debug loop
 
 `fastmcp dev inspector` enables reload by default, so changes in `mcp_server.py` should refresh automatically. If behavior seems stale, stop and restart the inspector process.
+
+
+# references
+- https://fastmcp.wiki/en/integrations/openapi
