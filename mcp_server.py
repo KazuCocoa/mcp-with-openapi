@@ -1,8 +1,11 @@
+import os
+import json
+from urllib.request import urlopen
+
 from fastmcp import FastMCP
 
 mcp = FastMCP("My MCP Server")
 
-# Example openapi spec as JSON.
 jsonplaceholder_spec = {
     "openapi": "3.0.3",
     "info": {
@@ -47,6 +50,15 @@ jsonplaceholder_spec = {
         }
     },
 }
+
+def fetch_openapi_spec(url: str) -> dict:
+    with urlopen(url, timeout=10) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+if os.environ.get("OPENAPI_URL"):
+    openapi_url = os.environ.get("OPENAPI_URL")
+    jsonplaceholder_spec = fetch_openapi_spec(openapi_url)
+
 
 openapi_mcp = FastMCP.from_openapi(jsonplaceholder_spec, name="JSONPlaceholder OpenAPI")
 mcp.mount(openapi_mcp, namespace="openapi")

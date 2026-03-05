@@ -21,6 +21,12 @@ uv run python main.py
 
 This starts the MCP server over HTTP on port `8000`.
 
+Use a custom OpenAPI endpoint via `OPENAPI_URL`:
+
+```bash
+OPENAPI_URL="https://jsonplaceholder.typicode.com/openapi.json" uv run python main.py
+```
+
 ## Open the MCP Inspector
 
 ```bash
